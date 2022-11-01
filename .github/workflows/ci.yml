@@ -1,0 +1,29 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        deno: [1.24.0, 1.23.0, 1.22.0]
+    name: Test with Deno ${{ matrix.deno }} 
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup Deno
+        uses: denolib/setup-deno@master
+        with:
+          deno-version: ${{ matrix.deno }}
+
+      - name: Print deno version
+        run: deno --version
+
+      - name: Check format
+        run: deno fmt --check 
+
+      - name: Check lint
+        run: deno lint .
