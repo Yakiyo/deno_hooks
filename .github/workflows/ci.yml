@@ -6,10 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        deno: [1.24.0, 1.23.0, 1.22.0]
-    name: Test with Deno ${{ matrix.deno }} 
+    name: Code quality check
 
     steps:
       - uses: actions/checkout@master
@@ -17,7 +14,7 @@ jobs:
       - name: Setup Deno
         uses: denolib/setup-deno@master
         with:
-          deno-version: ${{ matrix.deno }}
+          deno-version: 1.24.0
 
       - name: Print deno version
         run: deno --version
