@@ -4,6 +4,7 @@
 import { join } from 'https://deno.land/std@0.161.0/path/posix.ts';
 
 import { exists, git, set } from './util.ts';
+import { script } from './hook.ts';
 
 /**
  * Install hooks
@@ -30,8 +31,14 @@ export async function install(dir = '.hooks') {
 			new TextEncoder().encode('*'),
 		);
 
+		// Write hook.sh file using string from hook.ts
+		Deno.writeFileSync(
+			join(dir, '_/hook.sh'),
+			new TextEncoder().encode(script),
+		);
+
 		// Copy hook.sh file to the repos .hooks/_hook.sh
-		Deno.copyFileSync('./hook.sh', join(dir, '_/hook.sh'));
+		// Deno.copyFileSync('./hook.sh', join(dir, '_/hook.sh'));
 
 		const p = git(['config', 'core.hooksPath', dir]);
 		const rawError = await p.stderrOutput();
