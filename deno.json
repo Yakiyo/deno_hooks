@@ -14,8 +14,7 @@
 		}
 	},
 	"tasks": {
-		"fix": "deno fmt && deno lint",
-		"test": "deno test --allow-net=graphql.anilist.co",
+		"fix": "deno fmt && deno lint .",
 		"hook": "deno run -A mod.ts",
 		"re": "rm -rf .hooks && deno task hook install && deno task hook add .hooks/pre-commit \"deno fmt --check\""
 	}
