@@ -9,7 +9,7 @@ Zero dependency, lightweight and fast.
 Run the script through Deno in your project/workspace
 
 ```bash
-$ deno run --allow-read --allow-write https://deno.land/x/deno_hooks@0.1.1/mod.ts install
+$ deno run --allow-read --allow-run --allow-write https://deno.land/x/deno_hooks@0.1.1/mod.ts install
 ```
 
 Optionally, add it as a deno task (recommended):
@@ -20,7 +20,7 @@ In your projects `deno.json` file, add it to the task section.
 {
 	// --snip--
 	"tasks": {
-		"hook": "deno run --allow-read --allow-write https://deno.land/x/deno_hooks@0.1.1/mod.ts"
+		"hook": "deno run --allow-read --allow-run --allow-write https://deno.land/x/deno_hooks@0.1.1/mod.ts"
 	}
 }
 ```
