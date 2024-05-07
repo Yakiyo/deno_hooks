@@ -111,6 +111,19 @@ deno run scripts/test.ts
 python script.py
 ```
 
+## Usage with lint-staged
+
+For advanced usage, it's possible to use this project with
+[lint-staged](https://github.com/lint-staged/lint-staged) by
+adding the following hook:
+
+```bash
+$ deno task hook add .hooks/pre-commit "deno run -A npm:lint-staged"
+```
+
+Then create a `.lintstagedrc` file in the root of your repo,
+according to the documentation of lint-staged.
+
 ## Using with non-deno projects
 
 The module only depends on deno to run, but it doesn't necessarily
